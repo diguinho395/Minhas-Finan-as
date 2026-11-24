@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Esqueci a senha — Minhas Finanças</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head>
+<body class="auth">
+<aside><b style="font-size:20px">Minhas Finanças</b><div><h2>Seu dinheiro, claro e sob controle.</h2><ul><li>Veja seu saldo e quanto sobrou no mês</li><li>Receba alertas de contas a vencer</li><li>Acompanhe metas por categoria</li></ul></div><small style="color:#9FB0CB">© Minhas Finanças</small></aside>
+<main><form data-modo="esqueci" novalidate>
+<div><h1>Esqueci a senha</h1><p id="edsc">Use o código de recuperação que você recebeu ao criar a conta.</p></div>
+<div class="f"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+<div class="f"><label for="codigo">Código de recuperação</label><input id="codigo" name="codigo" type="text" autocomplete="off" placeholder="XXXX-XXXX-XXXX" style="text-transform:uppercase;letter-spacing:1px"></div>
+<div class="f"><label for="senha">Nova senha</label><input id="senha" name="senha" type="password" autocomplete="new-password" placeholder="Mínimo de 8 caracteres" required></div>
+<div class="f"><label for="conf">Confirmar nova senha</label><input id="conf" name="conf" type="password" autocomplete="new-password" required></div>
+<div class="err" id="err" role="alert" hidden></div>
+<button class="go">Redefinir senha</button>
+<p id="nota" style="font-size:13px">Não tem o código? Entre na sua conta e gere um em <b>Configurações → Segurança</b>. Sem o código, não é possível recuperar a senha.</p>
+<p style="text-align:center"><a href="login.html">Voltar ao login</a></p>
+</form></main>
+<script src="js/config.js"></script><script src="js/vendor/supabase.js"></script><script src="js/store.js"></script><script src="js/auth.js"></script></body></html>

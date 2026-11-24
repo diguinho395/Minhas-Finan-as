@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova senha — Minhas Finanças</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head>
+<body class="auth">
+<aside><b style="font-size:20px">Minhas Finanças</b><div><h2>Seu dinheiro, claro e sob controle.</h2><ul><li>Veja seu saldo e quanto sobrou no mês</li><li>Receba alertas de contas a vencer</li><li>Acompanhe metas por categoria</li></ul></div><small style="color:#9FB0CB">© Minhas Finanças</small></aside>
+<main><form data-modo="redefinir" novalidate>
+<div><h1>Criar nova senha</h1><p>Escolha uma nova senha para a sua conta.</p></div>
+<div class="f"><label for="senha">Nova senha</label><input id="senha" name="senha" type="password" autocomplete="new-password" placeholder="Mínimo de 8 caracteres" required></div>
+<div class="f"><label for="conf">Confirmar nova senha</label><input id="conf" name="conf" type="password" autocomplete="new-password" required></div>
+<div class="err" id="err" role="alert" hidden></div>
+<button class="go">Salvar nova senha</button>
+<p style="text-align:center"><a href="login.html">Voltar ao login</a></p>
+</form></main>
+<script src="js/config.js"></script><script src="js/vendor/supabase.js"></script><script src="js/store.js"></script><script src="js/auth.js"></script></body></html>
