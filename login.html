@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Entrar — Minhas Finanças</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head>
+<body class="auth">
+<aside><b style="font-size:20px">Minhas Finanças</b><div><h2>Seu dinheiro, claro e sob controle.</h2><ul><li>Veja seu saldo e quanto sobrou no mês</li><li>Receba alertas de contas a vencer</li><li>Acompanhe metas por categoria</li></ul></div><small style="color:#9FB0CB">© Minhas Finanças</small></aside>
+<main><form data-modo="login" novalidate>
+<div><h1>Entrar</h1><p>Acesse sua conta para ver suas finanças.</p></div>
+<div class="f"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+<div class="f"><label for="senha">Senha</label><input id="senha" name="senha" type="password" autocomplete="current-password" required></div>
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px"><label class="chk" style="margin:0"><input type="checkbox" name="lembrar">Lembrar de mim</label><a href="esqueci.html">Esqueci a senha</a></div>
+<div class="err" id="err" role="alert" hidden></div>
+<button class="go">Entrar</button>
+<p style="text-align:center">Ainda não tem conta? <a href="cadastro.html">Criar conta</a></p>
+</form></main>
+<script src="js/config.js"></script><script src="js/vendor/supabase.js"></script><script src="js/store.js"></script><script src="js/auth.js"></script></body></html>

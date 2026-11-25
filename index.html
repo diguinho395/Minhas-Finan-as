@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Minhas Finanças</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head>
+<body>
+<div class="shell">
+<aside class="side"><div class="brand">Minhas Finanças</div><nav id="nav" aria-label="Principal"></nav>
+<div class="usr"><span id="usr"></span><span id="sync" class="sy"></span><button class="sair" id="sair">Sair</button></div></aside>
+<div class="content">
+<header class="topb"><div><h1 id="ttl"></h1><p id="psub"></p></div>
+<div class="tools"><div class="mp" id="mn"><button class="pill" id="mbtn" data-act="mtoggle" aria-haspopup="dialog" aria-expanded="false"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg><span id="mlbl"></span><svg viewBox="0 0 24 24" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg></button>
+<div class="pop" id="mpop" role="dialog" aria-label="Escolher mês" hidden>
+<div class="msel"><svg class="c" viewBox="0 0 24 24"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4"/></svg><div><b id="mpl"></b><small>Mês selecionado</small></div><button class="mnx" data-act="mnext" aria-label="Próximo mês"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6"/></svg></button></div>
+<div class="myr"><button data-act="myprev" aria-label="Ano anterior"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M15 6l-6 6 6 6"/></svg></button><b id="myl"></b><button data-act="mynext" aria-label="Próximo ano"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M9 6l6 6-6 6"/></svg></button></div>
+<div class="mgrid" id="mgrid"></div>
+<button class="lnk" id="mhoje" data-act="mhoje">Ir para o mês atual</button></div></div><button class="fab" data-act="newtx" aria-label="Novo lançamento" title="Novo lançamento"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button></div></header>
+<main id="view"></main>
+</div></div>
+
+<dialog id="dtx"><form id="ftx" novalidate>
+<h2 id="dtt">Novo lançamento</h2>
+<div class="seg"><label><input type="radio" name="tipo" value="despesa" checked><span>Despesa</span></label><label><input type="radio" name="tipo" value="receita"><span>Receita</span></label></div>
+<div class="fg">
+<div class="f"><label for="fv" id="flv">Valor (R$)</label><input id="fv" class="money" name="valor" type="text" inputmode="numeric" autocomplete="off" data-m value="0,00"></div>
+<div class="f"><span class="lb">Data</span><div class="seg s3"><label><input type="radio" name="quando" value="hoje" checked><span>Hoje</span></label><label><input type="radio" name="quando" value="amanha"><span>Amanhã</span></label><label><input type="radio" name="quando" value="outra"><span>Outra</span></label></div><input id="fd" name="data" type="date" hidden style="margin-top:8px" aria-label="Data do lançamento"></div>
+<div class="f full"><label for="fdesc">Descrição</label><input id="fdesc" name="desc" maxlength="60" placeholder="Ex.: Aluguel, salário, mercado…"></div>
+<div class="f full"><span class="lb">Categoria</span><div class="cg" id="cg"></div></div>
+<div class="f" id="subw" hidden><label for="fsub">Subcategoria</label><select id="fsub"></select><button type="button" class="lnk" data-act="newsub-f" style="text-align:left">+ Nova subcategoria</button></div>
+<div class="f"><label for="fc">Conta ou cartão</label><select id="fc" name="conta"></select></div>
+<div class="f" id="repw"><label for="frep">Repetição</label><select id="frep" name="rep"><option value="">Não repetir</option><option value="mensal">Repetir todo mês</option><option value="parc">Parcelado</option></select></div>
+<div class="f" id="fnw" hidden><label for="fn" id="fnl">Número de parcelas</label><input id="fn" name="n" type="number" min="2" max="60" value="12" inputmode="numeric"></div>
+</div>
+<p class="dica" id="dica"></p><div class="err" id="ferr" role="alert" hidden></div>
+<div class="acoes"><button type="button" class="sec" data-act="close" data-d="dtx">Cancelar</button><button class="go">Salvar</button></div>
+</form></dialog>
+
+<dialog id="dcat"><form id="fcat" novalidate>
+<h2 id="dct">Nova categoria</h2>
+<div class="f"><label for="cnome">Nome</label><input id="cnome" maxlength="30"></div>
+<div class="f" id="clw"><label for="clim">Meta mensal de gastos (opcional)</label><input id="clim" type="text" inputmode="numeric" autocomplete="off" data-m value="0,00"></div>
+<div class="f" id="ciw"><span class="lb">Ícone</span><div class="cg ig" id="ig"></div></div>
+<div class="err" id="cerr" role="alert" hidden></div>
+<div class="acoes"><button type="button" class="sec" data-act="close" data-d="dcat">Cancelar</button><button class="go">Salvar</button></div>
+</form></dialog>
+
+<dialog id="dacc"><form id="facc" novalidate>
+<h2 id="dat">Nova conta</h2>
+<div class="f"><label for="anome">Nome</label><input id="anome" maxlength="30" placeholder="Ex.: Nubank, Itaú, Carteira"></div>
+<div class="f"><label for="atipo">Tipo</label><select id="atipo"><option value="conta">Conta corrente</option><option value="poupanca">Poupança</option><option value="dinheiro">Dinheiro</option><option value="cartao">Cartão de crédito</option></select></div>
+<div class="f" id="asw"><label for="asaldo">Saldo inicial (R$)</label><input id="asaldo" type="text" inputmode="numeric" autocomplete="off" data-m data-neg="1" value="0,00"></div>
+<div class="fg" id="acw" hidden><div class="f full"><label for="alim">Limite (R$)</label><input id="alim" type="text" inputmode="numeric" autocomplete="off" data-m value="0,00"></div><div class="f"><label for="afech">Dia do fechamento</label><input id="afech" type="number" min="1" max="31" inputmode="numeric"></div><div class="f"><label for="avenc">Dia do vencimento</label><input id="avenc" type="number" min="1" max="31" inputmode="numeric"></div></div>
+<div class="err" id="aerr" role="alert" hidden></div>
+<div class="acoes"><button type="button" class="sec" data-act="close" data-d="dacc">Cancelar</button><button class="go">Salvar</button></div>
+</form></dialog>
+<dialog id="dgoal"><form id="fgoal" novalidate>
+<h2 id="dgt">Novo objetivo</h2>
+<div class="f"><label for="gnome">Nome do objetivo</label><input id="gnome" maxlength="40" placeholder="Ex.: Viagem, carro, reserva de emergência"></div>
+<div class="fg"><div class="f"><label for="galvo">Valor da meta (R$)</label><input id="galvo" type="text" inputmode="numeric" autocomplete="off" data-m value="0,00"></div><div class="f"><label for="gatual">Já guardado (R$)</label><input id="gatual" type="text" inputmode="numeric" autocomplete="off" data-m value="0,00"></div>
+<div class="f full"><label for="gprazo">Quero alcançar até (opcional)</label><input id="gprazo" type="month"></div></div>
+<div class="f"><span class="lb">Imagem de fundo</span><div class="gpv" id="gpv">Nenhuma imagem</div>
+<div class="acoes" style="margin-top:10px"><label class="sec" style="display:grid;place-items:center;margin:0;cursor:pointer" for="gfile">Escolher imagem</label><button type="button" class="sec" id="grm" data-act="rmimg" hidden>Remover</button></div>
+<input id="gfile" type="file" accept="image/*" style="position:absolute;opacity:0;width:1px;height:1px"></div>
+<div class="err" id="gerr" role="alert" hidden></div>
+<div class="acoes"><button type="button" class="sec" data-act="close" data-d="dgoal">Cancelar</button><button class="go">Salvar</button></div>
+</form></dialog>
+<dialog id="ddep" style="width:min(440px,94vw)"><form id="fdep" novalidate>
+<h2 id="ddt">Guardar valor</h2>
+<div class="seg"><label><input type="radio" name="dop" value="add" checked><span>Guardar</span></label><label><input type="radio" name="dop" value="sub"><span>Retirar</span></label></div>
+<div class="f"><label for="dval">Valor (R$)</label><input id="dval" class="money" type="text" inputmode="numeric" autocomplete="off" data-m value="0,00"></div>
+<div class="acoes"><button type="button" class="sec" data-act="close" data-d="ddep">Cancelar</button><button class="go">Confirmar</button></div>
+</form></dialog>
+<dialog id="dimp" style="width:min(620px,94vw)"><form id="fimp" novalidate>
+<h2>Importar dados</h2>
+<div class="drop"><div class="gth"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M6 3h9l4 4v14H6zM14 3v5h5"/></svg></div><div style="flex:1;min-width:0"><b id="impn" style="font-size:14px">Nenhum arquivo escolhido</b><div id="imps" style="font-size:13px;color:var(--mut)">Escolha um arquivo .json exportado pelo Minhas Finanças.</div></div><label class="sec" for="impf" style="display:grid;place-items:center;margin:0;height:44px;cursor:pointer">Escolher arquivo</label></div>
+<input id="impf" type="file" accept=".json,application/json" style="position:absolute;opacity:0;width:1px;height:1px">
+<div class="g4" id="impc" hidden><div><b id="ic1">0</b>lançamentos</div><div><b id="ic2">0</b>categorias</div><div><b id="ic3">0</b>contas</div><div><b id="ic4">0</b>objetivos</div></div>
+<label class="opt"><input type="radio" name="modo" value="juntar" checked><span><b>Juntar com meus dados atuais</b> · recomendado<small>Mantém o que você já tem e adiciona só o que for novo. Itens repetidos não são duplicados.</small></span></label>
+<label class="opt"><input type="radio" name="modo" value="subst"><span><b>Substituir tudo</b><small>Apaga os dados atuais e usa só o conteúdo do arquivo.</small></span></label>
+<div class="err" id="imperr" role="alert" hidden></div>
+<div class="acoes"><button type="button" class="sec" data-act="close" data-d="dimp">Cancelar</button><button class="go" id="impgo" disabled>Importar</button></div>
+</form></dialog>
+<script src="js/config.js"></script><script src="js/vendor/supabase.js"></script><script src="js/store.js"></script><script src="js/icons.js"></script><script src="js/boot.js"></script></body></html>
